@@ -9,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    latest_version = '+'
+}
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "org.jsoup:jsoup:$latest_version"
 }
