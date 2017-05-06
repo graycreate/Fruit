@@ -1,6 +1,6 @@
 package me.ghui.fruit;
 
-import com.sun.istack.internal.Nullable;
+import me.ghui.fruit.annotations.Nullable;
 import me.ghui.fruit.annotations.Pick;
 import org.jsoup.nodes.Element;
 

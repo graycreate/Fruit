@@ -1,12 +1,6 @@
-group 'me.ghui'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'java'
 }

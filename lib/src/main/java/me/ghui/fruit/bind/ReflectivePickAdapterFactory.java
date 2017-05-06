@@ -1,10 +1,10 @@
 package me.ghui.fruit.bind;
 
-import com.sun.istack.internal.Nullable;
 import me.ghui.fruit.Fruit;
 import me.ghui.fruit.PickAdapter;
 import me.ghui.fruit.PickAdapterFactory;
 import me.ghui.fruit.PickFactory;
+import me.ghui.fruit.annotations.Nullable;
 import me.ghui.fruit.annotations.Pick;
 import me.ghui.fruit.internal.Types;
 import me.ghui.fruit.reflect.TypeToken;

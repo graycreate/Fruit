@@ -1,16 +1,43 @@
-group 'me.ghui'
-version '0.1.0'
-
-apply plugin: 'java'
-
-repositories {
-    mavenCentral()
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
 }
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
-ext {
-    latest_version = '+'
-}
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile "org.jsoup:jsoup:$latest_version"
+    compile "org.jsoup:jsoup:+"
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'me.ghui'
+            artifactId 'Fruit'
+            version '0.1.0'
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.bintrayUser : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayKey') ? project.bintrayKey : System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'Java'
+        name = 'Fruit'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'git@github.com:ghuiii/Fruit.git'
+        version {
+            name = '0.1.0'
+            released = new Date()
+            vcsTag = '0.1.0'
+        }
+    }
 }
