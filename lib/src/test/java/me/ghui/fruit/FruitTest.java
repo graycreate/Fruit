@@ -19,8 +19,7 @@ public class FruitTest {
         java.nio.file.Path resPath = java.nio.file.Paths.get(url.toURI());
         String htmlStr = new String(java.nio.file.Files.readAllBytes(resPath), "UTF8");
 //        System.out.println("html: " + htmlStr);
-        Fruit fruit = new Fruit();
-        fruitInfo = fruit.fromHtml(htmlStr, FruitInfo.class);
+        fruitInfo = new Fruit().fromHtml(htmlStr, FruitInfo.class);
         System.out.println("fruitInfo: " + fruitInfo);
     }
 
