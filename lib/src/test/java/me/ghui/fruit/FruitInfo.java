@@ -22,6 +22,7 @@ public class FruitInfo {
     private String blog;
     @Pick("div.fruit")
     private List<Item> items;
+    private String fieldWithOutAnnotation = "_fieldWithOutAnnotation_";
 
     public String getFavorite() {
         return favorite;
@@ -37,6 +38,10 @@ public class FruitInfo {
 
     public String getFavoriteInnerHtml() {
         return favoriteInnerHtml;
+    }
+
+    public String getFieldWithOutAnnotation() {
+        return fieldWithOutAnnotation;
     }
 
     public String getImg() {
@@ -58,6 +63,7 @@ public class FruitInfo {
                 ", favoriteOne='" + favoriteOne + '\'' +
                 ", favoriteHtml='" + favoriteHtml + '\'' +
                 ", favoriteHtml='" + favoriteInnerHtml + '\'' +
+                ", fieldWithOutAnnotation='" + fieldWithOutAnnotation + '\'' +
                 ", img='" + img + '\'' +
                 ", blog='" + blog + '\'' +
                 ", items=" + items +

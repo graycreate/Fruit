@@ -58,4 +58,9 @@ public class FruitTest {
         assert items.get(4).getColor().equals("pink");
     }
 
+    @Test
+    public void testFieldWithOutAnnotion() {
+        assert fruitInfo.getFieldWithOutAnnotation().equals("_fieldWithOutAnnotation_");
+    }
+
 }

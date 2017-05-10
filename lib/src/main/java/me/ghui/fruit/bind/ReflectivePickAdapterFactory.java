@@ -1,9 +1,6 @@
 package me.ghui.fruit.bind;
 
-import me.ghui.fruit.Fruit;
-import me.ghui.fruit.PickAdapter;
-import me.ghui.fruit.PickAdapterFactory;
-import me.ghui.fruit.PickFactory;
+import me.ghui.fruit.*;
 import me.ghui.fruit.annotations.Nullable;
 import me.ghui.fruit.annotations.Pick;
 import me.ghui.fruit.internal.Types;
@@ -60,10 +57,12 @@ public final class ReflectivePickAdapterFactory implements PickAdapterFactory {
             @Override
             public void read(Element element, Object instance) throws IllegalAccessException {
                 Pick pick = field.getAnnotation(Pick.class);
+                if (pick == null) {
+                    System.out.println("ignore Field: " + field.getName() + " without a Pick anotation");
+                    return;
+                }
+
                 if (parentPick != null) {
-                    if (pick == null) {
-                        throw new IllegalArgumentException("ignore Field: " + field.getName() + " without a Pick anotation");
-                    }
                     String query = parentPick.value() + " " + pick.value();//ancestor child
                     pick = PickFactory.create(query, pick.attr());
                 }
