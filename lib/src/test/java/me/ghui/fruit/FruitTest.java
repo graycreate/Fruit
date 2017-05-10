@@ -34,6 +34,17 @@ public class FruitTest {
     }
 
     @Test
+    public void testHtml() {
+        assert fruitInfo.getFavoriteHtml().contains("<div");
+    }
+
+    @Test
+    public void testInnerHtml() {
+        assert fruitInfo.getFavoriteInnerHtml().contains("<em");
+        assert !fruitInfo.getFavoriteInnerHtml().contains("<div");
+    }
+
+    @Test
     public void testAttr() {
         assert fruitInfo.getImg().equals("http://dwz.cn/5USjpv");
         assert fruitInfo.getBlog().equals("https://ghui.me");

@@ -1,5 +1,6 @@
 package me.ghui.fruit.bind;
 
+import me.ghui.fruit.Attrs;
 import me.ghui.fruit.Fruit;
 import me.ghui.fruit.PickAdapter;
 import me.ghui.fruit.PickAdapterFactory;
@@ -80,10 +81,14 @@ public final class PickAdapters {
             element = element.select(pick.value()).first();
             if (element == null) return (T) value;
             String attr = pick.attr();
-            if ("text".equals(attr)) {
+            if (Attrs.TEXT.equals(attr)) {
                 value = element.text();
-            } else if ("ownText".equals(attr)) {
+            } else if (Attrs.OWN_TEXT.equals(attr)) {
                 value = element.ownText();
+            } else if (Attrs.HTML.equals(attr)) {
+                value = element.outerHtml();
+            } else if (Attrs.INNER_HTML.equals(attr)) {
+                value = element.html();
             } else {
                 value = element.attr(attr);
             }

@@ -10,11 +10,15 @@ import java.util.List;
 public class FruitInfo {
     @Pick("div#only")
     private String favorite;
-    @Pick(value = "div#only", attr = "ownText")
+    @Pick(value = "div#only", attr = Attrs.HTML)
+    private String favoriteHtml;
+    @Pick(value = "div#only", attr = Attrs.INNER_HTML)
+    private String favoriteInnerHtml;
+    @Pick(value = "div#only", attr = Attrs.OWN_TEXT)
     private String favoriteOne;
-    @Pick(value = "img.apple", attr = "src")
+    @Pick(value = "img.apple", attr = Attrs.SRC)
     private String img;
-    @Pick(value = "a.author", attr = "href")
+    @Pick(value = "a.author", attr = Attrs.HREF)
     private String blog;
     @Pick("div.fruit")
     private List<Item> items;
@@ -25,6 +29,14 @@ public class FruitInfo {
 
     public String getFavoriteOne() {
         return favoriteOne;
+    }
+
+    public String getFavoriteHtml() {
+        return favoriteHtml;
+    }
+
+    public String getFavoriteInnerHtml() {
+        return favoriteInnerHtml;
     }
 
     public String getImg() {
@@ -44,6 +56,8 @@ public class FruitInfo {
         return "FruitInfo{" +
                 "favorite='" + favorite + '\'' +
                 ", favoriteOne='" + favoriteOne + '\'' +
+                ", favoriteHtml='" + favoriteHtml + '\'' +
+                ", favoriteHtml='" + favoriteInnerHtml + '\'' +
                 ", img='" + img + '\'' +
                 ", blog='" + blog + '\'' +
                 ", items=" + items +
