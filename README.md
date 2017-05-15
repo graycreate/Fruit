@@ -45,6 +45,7 @@ And now you want to parse the document to a Java Object named `FruitInfo`, like 
 public class FruitInfo {
     private String favorite;
     private String favoriteOne;
+    private String favoriteHtml;
     private String img;
     private String blog;
     private List<Item> items;
