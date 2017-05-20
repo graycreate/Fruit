@@ -1,9 +1,6 @@
 package me.ghui.fruit.bind;
 
-import me.ghui.fruit.Attrs;
-import me.ghui.fruit.Fruit;
-import me.ghui.fruit.PickAdapter;
-import me.ghui.fruit.PickAdapterFactory;
+import me.ghui.fruit.*;
 import me.ghui.fruit.annotations.Nullable;
 import me.ghui.fruit.annotations.Pick;
 import me.ghui.fruit.reflect.TypeToken;
@@ -50,7 +47,7 @@ public final class PickAdapters {
 
     public static final ReflectivePickAdapterFactory REFLECTIVE_ADAPTER = new ReflectivePickAdapterFactory();
 
-//**************************************************************************************************
+//**************************************************************************************************************************
 
     public static <T> PickAdapterFactory newFactory(final Class<T> type, final PickAdapter<T> adapter) {
         return new PickAdapterFactory() {
@@ -78,7 +75,9 @@ public final class PickAdapters {
     private static <T> T parseElement(Element element, Pick pick, Class<T> type) {
         String value = null;
         if (pick != null) {
-            element = element.select(pick.value()).first();
+            if (Utils.isNotEmpty(pick.value())) {
+                element = element.select(pick.value()).first();
+            }
             if (element == null) return (T) value;
             String attr = pick.attr();
             if (Attrs.TEXT.equals(attr)) {

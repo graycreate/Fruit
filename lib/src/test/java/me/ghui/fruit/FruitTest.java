@@ -63,4 +63,10 @@ public class FruitTest {
         assert fruitInfo.getFieldWithOutAnnotation().equals("_fieldWithOutAnnotation_");
     }
 
+    @Test
+    public void testFieldWithOutPickValue() {
+        assert fruitInfo.getItems().get(0).getId() == 1;
+        assert fruitInfo.getItems().get(4).getId() == 5;
+    }
+
 }

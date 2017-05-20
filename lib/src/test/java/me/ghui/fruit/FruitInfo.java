@@ -75,6 +75,12 @@ public class FruitInfo {
         private String name;
         @Pick(".color")
         private String color;
+        @Pick(attr = "id")
+        private int id;
+
+        public int getId() {
+            return id;
+        }
 
         public String getName() {
             return name;
@@ -89,6 +95,7 @@ public class FruitInfo {
             return "Item{" +
                     "name='" + name + '\'' +
                     ", color='" + color + '\'' +
+                    "id='" + id + '\'' +
                     '}';
         }
     }

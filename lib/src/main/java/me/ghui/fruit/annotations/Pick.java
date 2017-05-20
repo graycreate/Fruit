@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
 public @interface Pick {
-    String value();
+    String value() default "";
 
     String attr() default Attrs.TEXT;
 }
