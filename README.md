@@ -16,23 +16,23 @@ Let me suppose that you have a html file, just like below:
 <img src='http://dwz.cn/5USjpv' class="apple"/>
 <a href='https://ghui.me' class="author"> ghui</a>
 <div id='fruits'>
-    <div class="fruit">
+    <div class="fruit" id="1">
         <strong class="name">apple</strong>
         <strong class="color">red</strong>
     </div>
-    <div class="fruit">
+    <div class="fruit" id="2">
         <strong class="name">orange</strong>
         <strong class="color">green</strong>
     </div>
-    <div class="fruit">
+    <div class="fruit" id="3">
         <strong class="name">banana</strong>
         <strong class="color">yellow</strong>
     </div>
-    <div class="fruit">
+    <div class="fruit" id="4">
         <strong class="name">pear</strong>
         <strong class="color">yellow</strong>
     </div>
-    <div class="fruit">
+    <div class="fruit" id="5">
         <strong class="name">peach</strong>
         <strong class="color">pink</strong>
     </div>
@@ -53,6 +53,7 @@ public class FruitInfo {
     public static class Item {
         private String name;
         private String color;
+        private int id;
     }
 }
 ```
@@ -78,6 +79,8 @@ public class FruitInfo {
         private String name;
         @Pick(".color")
         private String color;
+        @Pick(attr = "id")
+        private int id;
     }
 }
 ```
@@ -97,13 +100,13 @@ any other exist attr-name in your html tree to it. Just run the junit test code 
 <dependency>
   <groupId>me.ghui</groupId>
   <artifactId>Fruit</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <type>pom</type>
 </dependency>
 ```
 * Gradle
 ```groovy
-compile 'me.ghui:Fruit:0.1.1'
+compile 'me.ghui:Fruit:0.1.2'
 ```
 
 # Thanks
