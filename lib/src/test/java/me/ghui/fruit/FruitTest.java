@@ -12,12 +12,13 @@ import java.util.List;
  */
 public class FruitTest {
     private static FruitInfo fruitInfo;
+    private static String htmlStr;
 
     @BeforeClass
     public static void init() throws IOException, URISyntaxException {
         java.net.URL url = Thread.currentThread().getContextClassLoader().getResource("fruit.html");
         java.nio.file.Path resPath = java.nio.file.Paths.get(url.toURI());
-        String htmlStr = new String(java.nio.file.Files.readAllBytes(resPath), "UTF8");
+        htmlStr = new String(java.nio.file.Files.readAllBytes(resPath), "UTF8");
 //        System.out.println("html: " + htmlStr);
         fruitInfo = new Fruit().fromHtml(htmlStr, FruitInfo.class);
         System.out.println("fruitInfo: " + fruitInfo);
@@ -67,6 +68,14 @@ public class FruitTest {
     public void testFieldWithOutPickValue() {
         assert fruitInfo.getItems().get(0).getId() == 1;
         assert fruitInfo.getItems().get(4).getId() == 5;
+    }
+
+    @Test
+    public void testDirctList() {
+        FruitItems items = new Fruit().fromHtml(htmlStr, FruitItems.class);
+        assert items.size() == 5;
+        assert items.get(4).getId() == 5;
+        System.out.println("fruitItems: " + fruitInfo);
     }
 
 }
