@@ -3,6 +3,7 @@ package me.ghui.fruit.bind;
 import me.ghui.fruit.*;
 import me.ghui.fruit.annotations.Nullable;
 import me.ghui.fruit.annotations.Pick;
+import me.ghui.fruit.internal.Preconditions;
 import me.ghui.fruit.reflect.TypeToken;
 import org.jsoup.nodes.Element;
 
@@ -75,7 +76,7 @@ public final class PickAdapters {
     private static <T> T parseElement(Element element, Pick pick, Class<T> type) {
         String value = null;
         if (pick != null) {
-            if (Utils.isNotEmpty(pick.value())) {
+            if (Preconditions.isNotEmpty(pick.value())) {
                 element = element.select(pick.value()).first();
             }
             if (element == null) return (T) value;

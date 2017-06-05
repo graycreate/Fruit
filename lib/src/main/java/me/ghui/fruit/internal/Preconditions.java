@@ -5,20 +5,24 @@ package me.ghui.fruit.internal;
  */
 
 public class Preconditions {
-	private Preconditions() {
-		throw new UnsupportedOperationException();
-	}
+    private Preconditions() {
+        throw new UnsupportedOperationException();
+    }
 
-	public static <T> T checkNotNull(T obj) {
-		if (obj == null) {
-			throw new NullPointerException();
-		}
-		return obj;
-	}
+    public static <T> T checkNotNull(T obj) {
+        if (obj == null) {
+            throw new NullPointerException();
+        }
+        return obj;
+    }
 
-	public static void checkArgument(boolean condition) {
-		if (!condition) {
-			throw new IllegalArgumentException();
-		}
-	}
+    public static void checkArgument(boolean condition) {
+        if (!condition) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean isNotEmpty(String text) {
+        return text != null && text.length() > 0;
+    }
 }
