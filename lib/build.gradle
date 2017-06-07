@@ -14,15 +14,22 @@ dependencies {
     compile "org.jsoup:jsoup:+"
 }
 
+task sourceJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allJava
+}
+
 publishing {
     publications {
         MyPublication(MavenPublication) {
             from components.java
+            artifact tasks.sourceJar
             groupId 'me.ghui'
             artifactId 'Fruit'
-            version '0.1.3'
+            version '0.1.4'
         }
     }
+
 }
 
 bintray {
@@ -35,9 +42,9 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'git@github.com:ghuiii/Fruit.git'
         version {
-            name = '0.1.3'
+            name = '0.1.4'
             released = new Date()
-            vcsTag = '0.1.3'
+            vcsTag = '0.1.4'
         }
     }
 }

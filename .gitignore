@@ -4,3 +4,4 @@
 *.jar
 captures
 build/
+/out
