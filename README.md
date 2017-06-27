@@ -109,6 +109,11 @@ any other exist attr-name in your html tree to it. Just run the junit test code 
 compile 'me.ghui:Fruit:0.1.4'
 ```
 
+# Proguad
+```
+-keeppackagenames org.jsoup.nodes
+```
+
 # Thanks
 1. [Gson](https://github.com/google/gson)
 2. [jsoup](https://github.com/jhy/jsoup)
