@@ -78,4 +78,9 @@ public class FruitTest {
         System.out.println("fruitItems: " + fruitInfo);
     }
 
+    @Test
+    public void testFieldWithoutPickAnnnotion() {
+        assert fruitInfo.getItems().get(0).isRed();
+    }
+
 }

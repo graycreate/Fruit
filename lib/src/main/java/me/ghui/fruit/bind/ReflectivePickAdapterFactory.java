@@ -36,6 +36,8 @@ public final class ReflectivePickAdapterFactory implements PickAdapterFactory {
         Pick classPick = raw.getAnnotation(Pick.class);
         while (raw != Object.class) {
             for (Field field : raw.getDeclaredFields()) {
+                //ignore field which doesn't has a Pick annotation
+                if (field.getAnnotation(Pick.class) == null) continue;
                 String name = field.getName();
                 if (name.contains("$change") || name.equals("serialVersionUID") || field.isSynthetic()) {
                     continue;

@@ -77,6 +77,12 @@ public class FruitInfo {
         private String color;
         @Pick(attr = "id")
         private int id;
+        private boolean isRed = false;
+
+        public boolean isRed() {
+            isRed = color.equals("red");
+            return isRed;
+        }
 
         public int getId() {
             return id;

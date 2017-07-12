@@ -26,7 +26,7 @@ publishing {
             artifact tasks.sourceJar
             groupId 'me.ghui'
             artifactId 'Fruit'
-            version '0.1.4'
+            version '0.1.5'
         }
     }
 
@@ -42,9 +42,9 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'git@github.com:ghuiii/Fruit.git'
         version {
-            name = '0.1.4'
+            name = '0.1.5'
             released = new Date()
-            vcsTag = '0.1.4'
+            vcsTag = '0.1.5'
         }
     }
 }
