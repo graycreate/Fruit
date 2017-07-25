@@ -22,7 +22,7 @@ public class FruitInfo {
     private String img;
     @Pick(value = "a.author", attr = Attrs.HREF)
     private String blog;
-    @Pick("div.fruit")
+    @Pick("body div.fruit")
     private List<Item> items;
     private String fieldWithOutAnnotation = "_fieldWithOutAnnotation_";
 

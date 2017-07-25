@@ -52,21 +52,24 @@ public final class CollectionPickAdapterFactory implements PickAdapterFactory {
 
         @Override
         public Collection<E> read(Element element, @Nullable Pick pick) {
-            Collection<E> collection = newInstance(type);
-            Pick classPick = type.getAnnotation(Pick.class);
-            if (classPick != null && pick == null) {
-                pick = classPick;
+            Collection<E> collection = null;
+            if (pick == null) {
+                pick = type.getAnnotation(Pick.class);
             }
-            if (pick != null) {
-                Elements elements = element.select(pick.value());
+            if (pick == null) {
+                return collection;
+            }
+
+            Elements elements = element.select(pick.value());
+            if (elements != null && elements.size() > 0) {
+                collection = newInstance(type);
                 for (Element e : elements) {
-                    E instance = elementAdapter.read(e, pick);
+                    E instance = elementAdapter.read(e, null);
                     collection.add(instance);
                 }
             }
             return collection;
         }
-
     }
 
     private static <T> Collection<T> newInstance(Class<? super Collection<T>> rawType) {
