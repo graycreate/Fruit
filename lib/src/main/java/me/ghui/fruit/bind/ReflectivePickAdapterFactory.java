@@ -29,63 +29,6 @@ public final class ReflectivePickAdapterFactory implements PickAdapterFactory {
         return new Adapter<>(type, getBoundFields(fruit, type, raw));
     }
 
-    private List<BoundField> getBoundFields(Fruit fruit, TypeToken<?> type, Class<?> raw) {
-        List<BoundField> boundFields = new ArrayList<>();
-        if (raw.isInterface()) return boundFields;
-        //only support current class annotation(exclude the super class annotion)
-        Pick classPick = raw.getAnnotation(Pick.class);
-        while (raw != Object.class) {
-            for (Field field : raw.getDeclaredFields()) {
-                //ignore field which doesn't has a Pick annotation
-                if (field.getAnnotation(Pick.class) == null) continue;
-                String name = field.getName();
-                if (name.contains("$change") || name.equals("serialVersionUID") || field.isSynthetic()) {
-                    continue;
-                }
-                field.setAccessible(true);
-                Type fieldType = Types.resolve(type.getType(), raw, field.getGenericType());
-                BoundField boundField = createBoundField(fruit, field, classPick, TypeToken.get(fieldType));
-                boundFields.add(boundField);
-            }
-            type = TypeToken.get(Types.resolve(type.getType(), raw, raw.getGenericSuperclass()));
-            raw = type.getRawType();
-        }
-        return boundFields;
-    }
-
-    private BoundField createBoundField(Fruit fruit, Field field, final Pick parentPick, final TypeToken<?> fieldType) {
-        final PickAdapter<?> pickAdapter = fruit.getAdapter(fieldType);
-        return new BoundField(field) {
-            @Override
-            public void read(Element element, Object instance) throws IllegalAccessException {
-                Pick pick = field.getAnnotation(Pick.class);
-                if (pick == null) {
-                    System.out.println("ignore Field: " + field.getName() + " without a Pick anotation");
-                    return;
-                }
-
-                if (parentPick != null) {
-                    String query = parentPick.value() + " " + pick.value();//ancestor child
-                    pick = PickFactory.create(query, pick.attr());
-                }
-                Object fieldValue = pickAdapter.read(element, pick);
-                if (fieldValue != null) {
-                    field.set(instance, fieldValue);
-                }
-            }
-        };
-    }
-
-    private static abstract class BoundField {
-        Field field;
-
-        BoundField(Field field) {
-            this.field = field;
-        }
-
-        public abstract void read(Element element, Object instance) throws IllegalAccessException;
-    }
-
     private static final class Adapter<T> extends PickAdapter<T> {
 
         private TypeToken<T> type;
@@ -98,7 +41,16 @@ public final class ReflectivePickAdapterFactory implements PickAdapterFactory {
 
         @Override
         public T read(Element element, @Nullable Pick pick) {
+            if (pick != null) {
+                element = element.select(pick.value()).first();
+            }
+
+            Pick classPick = type.getRawType().getAnnotation(Pick.class);
+            if (classPick != null) {
+                element = element.select(classPick.value()).first();
+            }
             T instance = null;
+            if (element == null) return instance;
             try {
                 final Constructor<? super T> constructor
                         = type.getRawType().getDeclaredConstructor();
@@ -117,6 +69,59 @@ public final class ReflectivePickAdapterFactory implements PickAdapterFactory {
             }
             return instance;
         }
+    }
+
+    private List<BoundField> getBoundFields(Fruit fruit, TypeToken<?> type, Class<?> raw) {
+        List<BoundField> boundFields = new ArrayList<>();
+        if (raw.isInterface()) return boundFields;
+        //only support current class annotation(exclude the super class annotion)
+//        Pick classPick = raw.getAnnotation(Pick.class);
+        while (raw != Object.class) {
+            for (Field field : raw.getDeclaredFields()) {
+                //ignore field which doesn't has a Pick annotation
+                if (field.getAnnotation(Pick.class) == null) continue;
+                String name = field.getName();
+                if (name.contains("$change") || name.equals("serialVersionUID") || field.isSynthetic()) {
+                    continue;
+                }
+                field.setAccessible(true);
+                Type fieldType = Types.resolve(type.getType(), raw, field.getGenericType());
+                BoundField boundField = createBoundField(fruit, field, TypeToken.get(fieldType));
+                boundFields.add(boundField);
+            }
+            type = TypeToken.get(Types.resolve(type.getType(), raw, raw.getGenericSuperclass()));
+            raw = type.getRawType();
+        }
+        return boundFields;
+    }
+
+    private BoundField createBoundField(Fruit fruit, Field field, final TypeToken<?> fieldType) {
+        final PickAdapter<?> pickAdapter = fruit.getAdapter(fieldType);
+        return new BoundField(field) {
+            @Override
+            public void read(Element element, Object instance) throws IllegalAccessException {
+                Pick pick = field.getAnnotation(Pick.class);
+                if (pick == null) {
+                    System.out.println("ignore Field: " + field.getName() + " without a Pick anotation");
+                    return;
+                }
+
+                Object fieldValue = pickAdapter.read(element, pick);
+                if (fieldValue != null) {
+                    field.set(instance, fieldValue);
+                }
+            }
+        };
+    }
+
+    private static abstract class BoundField {
+        Field field;
+
+        BoundField(Field field) {
+            this.field = field;
+        }
+
+        public abstract void read(Element element, Object instance) throws IllegalAccessException;
     }
 
 }

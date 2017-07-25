@@ -34,6 +34,7 @@ public class Fruit {
         factories.add(PickAdapters.LONG_FACTORY);
         factories.add(PickAdapters.STRING_FACTORY);
         factories.add(PickAdapters.COLLECTION_FACTORY);
+        //must at the bottom
         factories.add(PickAdapters.REFLECTIVE_ADAPTER);
         mFactories = Collections.unmodifiableList(factories);
     }

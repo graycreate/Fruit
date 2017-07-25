@@ -8,6 +8,8 @@ import java.util.List;
  * Created by ghui on 08/05/2017.
  */
 public class FruitInfo {
+    @Pick("div#fruits div.best")
+    private Best best;
     @Pick("div#only")
     private String favorite;
     @Pick(value = "div#only", attr = Attrs.HTML)
@@ -23,6 +25,33 @@ public class FruitInfo {
     @Pick("div.fruit")
     private List<Item> items;
     private String fieldWithOutAnnotation = "_fieldWithOutAnnotation_";
+
+    public Best getBest() {
+        return best;
+    }
+
+    public static class Best {
+        @Pick("strong.name")
+        private String name;
+        @Pick("strong.color")
+        private String color;
+
+        public String getName() {
+            return name;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        @Override
+        public String toString() {
+            return "Best{" +
+                    "name='" + name + '\'' +
+                    ", color='" + color + '\'' +
+                    '}';
+        }
+    }
 
     public String getFavorite() {
         return favorite;
@@ -67,6 +96,7 @@ public class FruitInfo {
                 ", img='" + img + '\'' +
                 ", blog='" + blog + '\'' +
                 ", items=" + items +
+                ", best=" + best +
                 '}';
     }
 

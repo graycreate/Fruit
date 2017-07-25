@@ -83,4 +83,9 @@ public class FruitTest {
         assert fruitInfo.getItems().get(0).isRed();
     }
 
+    @Test
+    public void testNoneField() {
+        assert fruitInfo.getBest() == null;
+    }
+
 }
