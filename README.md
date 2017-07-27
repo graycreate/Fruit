@@ -103,13 +103,13 @@ any other exist attr-name in your html tree to it. Just run the junit test code 
 <dependency>
   <groupId>me.ghui</groupId>
   <artifactId>Fruit</artifactId>
-  <version>0.1.6</version>
+  <version>0.1.7</version>
   <type>pom</type>
 </dependency>
 ```
 * Gradle
 ```groovy
-compile 'me.ghui:Fruit:0.1.6'
+compile 'me.ghui:Fruit:0.1.7'
 ```
 
 # Proguad
