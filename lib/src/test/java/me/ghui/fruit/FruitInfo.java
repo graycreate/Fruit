@@ -1,6 +1,7 @@
 package me.ghui.fruit;
 
 import me.ghui.fruit.annotations.Pick;
+import me.ghui.fruit.internal.Preconditions;
 
 import java.util.List;
 
@@ -25,9 +26,42 @@ public class FruitInfo {
     @Pick("body div.fruit")
     private List<Item> items;
     private String fieldWithOutAnnotation = "_fieldWithOutAnnotation_";
+    @Pick("div.problem")
+    private Problem problem;
 
     public Best getBest() {
         return best;
+    }
+
+    public Problem getProblem() {
+        return problem;
+    }
+
+    public static class Problem {
+        @Pick(attr = Attrs.OWN_TEXT)
+        private String title;
+        @Pick("ul li")
+        private List<String> tips;
+
+        public boolean isEmpty() {
+            return Preconditions.isEmpty(tips) && Preconditions.isEmpty(tips);
+        }
+
+        public List<String> getTips() {
+            return tips;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
+        public String toString() {
+            return "Problem{" +
+                    "title='" + title + '\'' +
+                    ", tips=" + tips +
+                    '}';
+        }
     }
 
     public static class Best {

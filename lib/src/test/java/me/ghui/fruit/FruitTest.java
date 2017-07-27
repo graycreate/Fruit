@@ -88,4 +88,8 @@ public class FruitTest {
         assert fruitInfo.getBest() == null;
     }
 
+    @Test
+    public void testCollectionElementWithoutPickAnnotion() {
+        assert "Problem A".equals(fruitInfo.getProblem().getTips().get(0));
+    }
 }

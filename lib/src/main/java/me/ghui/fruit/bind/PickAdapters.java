@@ -76,7 +76,7 @@ public final class PickAdapters {
     private static <T> T parseElement(Element element, Pick pick, Class<T> type) {
         String value = null;
         if (pick != null) {
-            if (Preconditions.isNotEmpty(pick.value())) {
+            if (Preconditions.notEmpty(pick.value())) {
                 element = element.select(pick.value()).first();
             }
             if (element == null) return (T) value;
@@ -92,7 +92,10 @@ public final class PickAdapters {
             } else {
                 value = element.attr(attr);
             }
+        } else {
+            value = element.text();
         }
+
         if (type == int.class || type == Integer.class) {
             return (T) Integer.valueOf(value);
         } else if (type == long.class || type == Long.class) {
