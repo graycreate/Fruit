@@ -1,7 +1,6 @@
 .gradle
 .idea
 /local.properties
-*.jar
 captures
 build/
 /out
