@@ -92,4 +92,10 @@ public class FruitTest {
     public void testCollectionElementWithoutPickAnnotion() {
         assert "Problem A".equals(fruitInfo.getProblem().getTips().get(0));
     }
+
+    @Test
+    public void testNullInput() {
+        assert null == new Fruit().fromHtml("", Object.class);
+    }
+
 }

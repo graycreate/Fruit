@@ -1,6 +1,7 @@
 package me.ghui.fruit;
 
 import me.ghui.fruit.bind.PickAdapters;
+import me.ghui.fruit.internal.Preconditions;
 import me.ghui.fruit.reflect.TypeToken;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.DataUtil;
@@ -44,6 +45,7 @@ public class Fruit {
     }
 
     public <T> T fromHtml(String html, Type typeOfT) {
+        if (Preconditions.isEmpty(html)) return null;
         return fromHtml(Jsoup.parse(html), typeOfT);
     }
 
