@@ -95,8 +95,10 @@ For more details, visit [here](https://jsoup.org/cookbook/extracting-data/select
 The second field is optional, and it's default value is `text`. You can assign *ownText*(direct text), *src*, *href*, and 
 any other exist attr-name in your html tree to it. Just run the junit test code for more detail.
 
-# Apps that uses Fruit
-1. [V2er](https://play.google.com/store/apps/details?id=me.ghui.v2er)
+# Who uses Fruit ?
+## 1. V2er - A V2EX App for Android platform.
+[![V2er](http://ghui.u.qiniudn.com/ic_v2er.png-sm)](https://play.google.com/store/apps/details?id=me.ghui.v2er.free)
+
 
 # Download
 * Maven
