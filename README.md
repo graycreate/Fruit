@@ -96,9 +96,8 @@ The second field is optional, and it's default value is `text`. You can assign *
 any other exist attr-name in your html tree to it. Just run the junit test code for more detail.
 
 # Who uses Fruit ?
-## 1. V2er - A V2EX App for Android platform.
-[![V2er](http://ghui.u.qiniudn.com/ic_v2er.png-sm)](https://play.google.com/store/apps/details?id=me.ghui.v2er.free)
-
+ 1. [V2er - A Nice V2EX App.](https://play.google.com/store/apps/details?id=me.ghui.v2er.free)
+    
 
 # Download
 * Maven
