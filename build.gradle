@@ -3,4 +3,8 @@ allprojects {
         jcenter()
     }
     apply plugin: 'java'
+
+    ext{
+        fruitVersion = '1.0.1'
+    }
 }

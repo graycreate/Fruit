@@ -5,3 +5,4 @@ captures
 build/
 /out
 lib/out
+example/out
