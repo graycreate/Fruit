@@ -14,38 +14,96 @@ dependencies {
     compile "org.jsoup:jsoup:1.10.3"
 }
 
-task sourceJar(type: Jar) {
-    classifier 'sources'
-    from sourceSets.main.allJava
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+ext {
+    fruitVersion = '1.0.2'
+    fruitName = 'Fruit'
+    fruitUrl = 'git@github.com:ghuiii/Fruit.git'
+    desc = "A java library which can be used to convert html to Java Objects"
+    license = "Apache-2.0"
+}
+
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name "$license"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+    }
+    developers {
+        developer {
+            id "ghui"
+            name "ghui"
+            email "ghuiii.zhang@gmail.com"
+        }
+    }
+
+    scm {
+        url "$fruitUrl"
+    }
 }
 
 publishing {
     publications {
         MyPublication(MavenPublication) {
             from components.java
-            artifact tasks.sourceJar
+            artifact sourcesJar
+            artifact javadocJar
             groupId 'me.ghui'
-            artifactId 'Fruit'
+            artifactId "$fruitName"
             version "$fruitVersion"
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', "$desc")
+                root.appendNode('name', "$fruitName")
+                root.appendNode('url', "$fruitUrl")
+                root.children().last() + pomConfig
+            }
         }
     }
 
 }
 
 bintray {
-    user = project.hasProperty('bintrayUser') ? project.bintrayUser : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayKey') ? project.bintrayKey : System.getenv('BINTRAY_KEY')
+    user = BINTRAY_USER
+    key = BINTRAY_KEY
     publications = ['MyPublication']
     pkg {
         repo = 'Java'
-        name = 'Fruit'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'git@github.com:ghuiii/Fruit.git'
+        name = "$fruitName"
+        licenses = ["$license"]
+        vcsUrl = "$fruitUrl"
         version {
             name = "$fruitVersion"
-            desc = "A java library which can be used to convert html to Java Objects"
+            desc = "$desc"
             released = new Date()
             vcsTag = "$fruitVersion"
+
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+            }
+            //Optional configuration for Maven Central sync of the version
+            mavenCentralSync {
+                sync = true //[Default: true] Determines whether to sync the version to Maven Central.
+                user = OSS_USER //OSS user token: mandatory
+                password = OSS_PSW //OSS user password: mandatory
+                close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+            }
         }
     }
 }
