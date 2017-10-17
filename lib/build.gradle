@@ -80,8 +80,8 @@ publishing {
 }
 
 bintray {
-    user = project.hasProperty('bintrayUser') ? project.bintrayUser : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayKey') ? project.bintrayKey : System.getenv('BINTRAY_KEY')
+    user = System.getenv('BINTRAY_USER')
+    key =  System.getenv('BINTRAY_KEY')
     publications = ['MyPublication']
     pkg {
         repo = 'Java'
@@ -100,8 +100,8 @@ bintray {
             //Optional configuration for Maven Central sync of the version
             mavenCentralSync {
                 sync = true //[Default: true] Determines whether to sync the version to Maven Central.
-                user = OSS_USER //OSS user token: mandatory
-                password = OSS_PSW //OSS user password: mandatory
+                user = System.getenv('OSS_USER')
+                password = System.getenv('OSS_PSW')
                 close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
             }
         }
