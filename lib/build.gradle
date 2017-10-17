@@ -27,15 +27,6 @@ publishing {
             groupId 'me.ghui'
             artifactId 'Fruit'
             version "$fruitVersion"
-            pom.withXml {
-                asNode().dependencies.'*'.findAll() {
-                    it.scope.text() == 'runtime'  && project.configurations.compile.allDependencies.find { dep ->
-                        dep.name == it.artifactId.text()
-                    }
-                }.each() {
-                    it.scope*.value = 'compile'
-                }
-            }
         }
     }
 
@@ -52,6 +43,7 @@ bintray {
         vcsUrl = 'git@github.com:ghuiii/Fruit.git'
         version {
             name = "$fruitVersion"
+            desc = "A java library which can be used to convert html to Java Objects"
             released = new Date()
             vcsTag = "$fruitVersion"
         }
