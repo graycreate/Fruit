@@ -80,9 +80,9 @@ publishing {
 }
 
 bintray {
-    user = project.BINTRAY_USER
-    key = project.BINTRAY_KEY
-    print("user: " + user + ", key: " + key)
+    user = project.hasProperty('bintray_user') ? bintray_user : ''
+    key = project.hasProperty('bintray_key') ? bintray_key : ''
+    println("user: " + user + ", key: " + key)
     publications = ['MyPublication']
     pkg {
         repo = 'Java'
@@ -98,12 +98,11 @@ bintray {
             gpg {
                 sign = true //Determines whether to GPG sign the files. The default is false
             }
-            //Optional configuration for Maven Central sync of the version
             mavenCentralSync {
                 sync = true //[Default: true] Determines whether to sync the version to Maven Central.
-                user = project.OSS_USER
-                password = project.OSS_PSW
-                print("oss_user: " + user + ", oss_psw: " + password)
+                user = project.hasProperty('oss_user') ? project.oss_user : ''
+                password = project.hasProperty('oss_psw') ? project.oss_psw : ''
+                println("oss_user: " + user + ", oss_psw: " + password)
                 close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
             }
         }
