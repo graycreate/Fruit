@@ -30,9 +30,9 @@ artifacts {
 }
 
 ext {
-    fruitVersion = '1.0.2'
+    fruitVersion = '1.0.4'
     fruitName = 'Fruit'
-    fruitUrl = 'git@github.com:ghuiii/Fruit.git'
+    fruitUrl = 'https://git@github.com:ghuiii/Fruit.git'
     desc = "A java library which can be used to convert html to Java Objects"
     license = "Apache-2.0"
 }
@@ -80,8 +80,9 @@ publishing {
 }
 
 bintray {
-    user = System.getenv('BINTRAY_USER')
-    key =  System.getenv('BINTRAY_KEY')
+    user = project.BINTRAY_USER
+    key = project.BINTRAY_KEY
+    print("user: " + user + ", key: " + key)
     publications = ['MyPublication']
     pkg {
         repo = 'Java'
@@ -100,8 +101,9 @@ bintray {
             //Optional configuration for Maven Central sync of the version
             mavenCentralSync {
                 sync = true //[Default: true] Determines whether to sync the version to Maven Central.
-                user = System.getenv('OSS_USER')
-                password = System.getenv('OSS_PSW')
+                user = project.OSS_USER
+                password = project.OSS_PSW
+                print("oss_user: " + user + ", oss_psw: " + password)
                 close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
             }
         }
