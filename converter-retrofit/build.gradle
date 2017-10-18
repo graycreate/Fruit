@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
 buildscript {
     repositories {
         jcenter()
