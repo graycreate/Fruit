@@ -24,7 +24,6 @@ public class FruitConverterFactory extends Converter.Factory {
     return new FruitConverterFactory(new Fruit());
   }
 
-
   private FruitConverterFactory(Fruit fruit) {
     mPicker = fruit;
   }

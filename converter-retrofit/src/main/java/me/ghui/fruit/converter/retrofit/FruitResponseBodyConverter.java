@@ -25,7 +25,11 @@ public class FruitResponseBodyConverter<T> implements Converter<ResponseBody, T>
   public T convert(ResponseBody value) throws IOException {
     try {
       String response = value.string();
-      return mPicker.fromHtml(response, mType);
+      T data = mPicker.fromHtml(response, mType);
+      if(data != null && data instanceof IBaseWrapper){
+          ((IBaseWrapper) data).setResponse(response);
+      }
+      return data;
     } finally {
       value.close();
     }
