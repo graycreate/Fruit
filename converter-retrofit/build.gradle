@@ -41,7 +41,7 @@ artifacts {
 ext {
     libVersion = '1.0.0'
     libName = 'fruit-converter-retrofit'
-    libUrl = 'https://git@github.com:ghuiii/Fruit.git'
+    libUrl = 'https://github.com/ghuiii/Fruit/tree/master/converter-retrofit'
     desc = "A fruit converter for retrofit"
     license = "Apache-2.0"
 }
