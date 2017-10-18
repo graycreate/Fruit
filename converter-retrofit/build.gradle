@@ -14,10 +14,11 @@ buildscript {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.8.0'
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.9.0'
+
     compile "me.ghui:Fruit:1.0.4"
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.okhttp3:mockwebserver:3.9.0'
-    compile 'org.assertj:assertj-core:3.8.0'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -36,7 +37,7 @@ artifacts {
 }
 
 ext {
-    libVersion = '1.0.4'
+    libVersion = '1.0.5'
     libName = 'fruit-converter-retrofit'
     libUrl = 'https://github.com/ghuiii/Fruit/tree/master/converter-retrofit'
     desc = "A fruit converter for retrofit"
