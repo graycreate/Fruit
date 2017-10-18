@@ -1,4 +1,5 @@
 rootProject.name = 'Fruit'
 include 'lib'
 include 'example'
+include ':example-android', ':converter-retrofit'
 
