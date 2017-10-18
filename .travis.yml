@@ -9,5 +9,7 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+install: true
 script:
- - ./gradlew test
+ - ./gradlew :lib:test
+ - ./gradlew :converter-retrofit:test
