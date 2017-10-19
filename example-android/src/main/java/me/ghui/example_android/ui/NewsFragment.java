@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.disposables.Disposable;
 import me.ghui.example_android.R;
+import me.ghui.example_android.general.GeneralConsumer;
 import me.ghui.example_android.general.GlideApp;
 import me.ghui.example_android.network.APIService;
 import me.ghui.example_android.network.bean.NewsInfo;
@@ -40,8 +42,11 @@ public class NewsFragment extends BaseFragment {
         recyclerView.setAdapter(newsAdapter);
         APIService.get().homeNews("all")
                 .compose(rx())
-                .subscribe(newsInfo -> {
-                    newsAdapter.setData(newsInfo);
+                .subscribe(new GeneralConsumer<NewsInfo>() {
+                    @Override
+                    public void onConsume(NewsInfo newsInfo) {
+                        newsAdapter.setData(newsInfo);
+                    }
                 });
     }
 

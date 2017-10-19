@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
 import me.ghui.example_android.R;
+import me.ghui.example_android.general.GeneralConsumer;
 import me.ghui.example_android.general.GlideApp;
 import me.ghui.example_android.network.APIService;
 import me.ghui.example_android.network.bean.DailyHotInfo;
@@ -44,7 +45,12 @@ public class DailyHotFragment extends BaseFragment {
 
         APIService.get().dailyHot()
                 .compose(rx())
-                .subscribe(items -> adapter.setData(items));
+                .subscribe(new GeneralConsumer<DailyHotInfo>() {
+                    @Override
+                    public void onConsume(DailyHotInfo items) {
+                        adapter.setData(items);
+                    }
+                });
     }
 
     class DailyHotAdapter extends RecyclerView.Adapter<ViewHolder> {
