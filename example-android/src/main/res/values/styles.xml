@@ -8,4 +8,43 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="BodyText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/bodyTextColor</item>
+        <item name="android:textSize">@dimen/smallTextSize</item>
+        <item name="android:lineSpacingMultiplier">1.20</item>
+    </style>
+
+    <style name="smallText" parent="BodyText">
+        <item name="android:textSize">@dimen/microTextSize</item>
+    </style>
+
+    <style name="TagView" parent="smallText">
+        <item name="android:foreground">?android:selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="TopicTitle" parent="TitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/mediumTextSize</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">6dp</item>
+        <!--<item name="android:transitionName">@string/share_element_topic_title</item>-->
+    </style>
+
+    <style name="hintText" parent="smallText">
+        <item name="android:textColor">@color/hintTextColor</item>
+    </style>
+
+    <style name="TitleText" parent="BodyText">
+        <item name="android:textSize">@dimen/largeTextSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubTitleText" parent="TitleText">
+        <item name="android:textSize">@dimen/mediumTextSize</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

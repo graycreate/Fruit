@@ -1,0 +1,21 @@
+<resources>
+    <dimen name="largeTextSize">18dp</dimen>
+    <dimen name="mediumTextSize">16dp</dimen>
+    <dimen name="smallTextSize">14dp</dimen>
+    <dimen name="microTextSize">12dp</dimen>
+    <dimen name="tinyTextSize">10dp</dimen>
+    <dimen name="tinyTinyTextSize">8dp</dimen>
+    <dimen name="small_avatar_size">30dp</dimen>
+    <dimen name="common_avatar_size">40dp</dimen>
+    <dimen name="medium_avatar_size">75dp</dimen>
+    <dimen name="large_avatar_size">90dp</dimen>
+    <dimen name="divider_size">0.5dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+
+    <dimen name="toolbar_size">56dp</dimen>
+    <dimen name="searchbar_size">48dp</dimen>
+    <dimen name="mentioned_list_height">42dp</dimen>
+    <dimen name="common_padding_size">12dp</dimen>
+    <dimen name="toolbar_small_height">73dp</dimen>
+    <dimen name="tablayout_height">30dp</dimen>
+</resources>

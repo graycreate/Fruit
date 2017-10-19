@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/avatar_img"
+        android:layout_width="@dimen/common_avatar_size"
+        android:layout_height="@dimen/common_avatar_size"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/user_name_tv"
+        style="@style/SubTitleText"
+        android:layout_alignTop="@id/avatar_img"
+        android:layout_toRightOf="@id/avatar_img"
+        tools:text="ghui" />
+
+    <TextView
+        android:id="@+id/time_tv"
+        style="@style/hintText"
+        android:layout_alignBottom="@id/avatar_img"
+        android:layout_alignLeft="@id/user_name_tv"
+        android:paddingRight="4dp"
+        tools:text="1小时17分钟前" />
+
+    <TextView
+        android:id="@+id/comment_num_tv"
+        style="@style/hintText"
+        android:layout_alignBottom="@id/avatar_img"
+        android:layout_toRightOf="@id/time_tv"
+        tools:text="评论38" />
+
+    <me.ghui.example_android.widget.TagView
+        android:id="@+id/tagview"
+        style="@style/TagView"
+        android:layout_alignParentEnd="true"
+        tools:text="问与答" />
+
+    <TextView
+        android:id="@+id/title_tv"
+        style="@style/TopicTitle"
+        android:layout_below="@id/avatar_img"
+        tools:text="[macOS]有人用 magnet 分屏的吗？好像有会导致系统卡顿的奇怪是的呵呵，里" />
+</RelativeLayout>

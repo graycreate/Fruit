@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="colorPrimary">#262626</color>
+    <color name="colorPrimaryDark">#262626</color>
+
+    <color name="colorAccent">#555555</color>
+    <color name="bodyTextColor">#555555</color>
+    <color name="hintTextColor">#a3a1a1</color>
+
+    <color name="white">@android:color/white</color>
+
+    <color name="ripple_color">#d4d4d4</color>
+    <color name="button_background_color">#3A3636</color>
+    <color name="divider_color">#60e2e2e2</color>
+    <color name="transparent_navbar_color">#80000000</color>
+    <color name="default_page_bg">#ffffff</color>
 </resources>
