@@ -50,7 +50,7 @@ public class NewsFragment extends BaseFragment {
         return R.layout.recyclerview;
     }
 
-    class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+    class NewsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         private NewsInfo newsInfo;
 
@@ -60,13 +60,13 @@ public class NewsFragment extends BaseFragment {
         }
 
         @Override
-        public NewsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(getContext()).inflate(R.layout.common_list_item, null);
             return new ViewHolder(itemView);
         }
 
         @Override
-        public void onBindViewHolder(NewsAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(ViewHolder holder, int position) {
             NewsInfo.Item item = newsInfo.getItems().get(position);
             GlideApp.with(getContext())
                     .load(item.getAvatar())
@@ -85,26 +85,6 @@ public class NewsFragment extends BaseFragment {
                 return newsInfo.getItems().size();
             } catch (Exception e) {
                 return 0;
-            }
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.user_name_tv)
-            public TextView userName;
-            @BindView(R.id.time_tv)
-            public TextView time;
-            @BindView(R.id.tagview)
-            public TextView tag;
-            @BindView(R.id.title_tv)
-            public TextView title;
-            @BindView(R.id.avatar_img)
-            public ImageView avatar;
-            @BindView(R.id.comment_num_tv)
-            public TextView comment;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-                ButterKnife.bind(this, itemView);
             }
         }
 

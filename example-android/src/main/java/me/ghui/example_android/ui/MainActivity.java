@@ -1,4 +1,4 @@
-package me.ghui.example_android;
+package me.ghui.example_android.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.ghui.example_android.R;
 import me.ghui.example_android.ui.DailyHotFragment;
 import me.ghui.example_android.ui.NewsFragment;
 
