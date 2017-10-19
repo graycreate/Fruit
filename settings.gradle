@@ -1,7 +1,14 @@
 rootProject.name = 'Fruit'
 include 'lib'
 include ':converter-retrofit'
-include ':example-android'
-if (System.getenv()['ANDROID_HOME']) {
-    include ':example-android'
+
+try {
+    Properties properties = new Properties()
+    properties.load(file('local.properties').newDataInputStream())
+    def sdkDir = properties.getProperty('sdk.dir')
+    if (sdkDir != null && sdkDir.contains("droid")) {
+        include ':example-android'
+    }
+} catch (Exception e) {
+    //just ignore
 }
