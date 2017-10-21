@@ -1,6 +1,9 @@
 # Fruit
 [ ![Download](https://api.bintray.com/packages/ghui/Java/Fruit/images/download.svg) ](https://bintray.com/ghui/Java/Fruit/_latestVersion)
 [![Build Status](https://travis-ci.org/ghuiii/Fruit.svg?branch=master)](https://travis-ci.org/ghuiii/Fruit)
+[![](https://badge.juejin.im/entry/59eb1c4b6fb9a0451329d644/likes.svg?style=flat)](https://juejin.im/entry/59eb1c4b6fb9a0451329d644/detail)
+
+![](http://ghui.u.qiniudn.com/fruitt.png)
 
 Fruit is a Java library that can be used to convert html to Java Objects ~~and back~~ follow a certain rule.
 So, in short, **Fruit for Html just like Gson for Json.**
