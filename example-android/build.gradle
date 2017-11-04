@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-rc1'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
