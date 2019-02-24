@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.full_version).setOnMenuItemClickListener(item -> {
-            Utils.openStorePage("me.ghui.v2er.free");
+            Utils.openStorePage("me.ghui.v2er");
             return false;
         });
 
